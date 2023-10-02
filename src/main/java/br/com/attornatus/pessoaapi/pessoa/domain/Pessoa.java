@@ -8,9 +8,11 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import br.com.attornatus.pessoaapi.pessoa.application.api.PessoaRequest;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,10 +31,10 @@ public class Pessoa {
 	
 	private LocalDateTime dataHoraDeCadastro;
 	private LocalDateTime dataHoraDaultimaAuteracao;
-	
-	private Pessoa(@NotBlank String nomeCompleto, @NotNull LocalDate dataNascimento) {
-		this.nomeCompleto = nomeCompleto;
-		this.dataNascimento = dataNascimento;
+
+	public Pessoa(@Valid PessoaRequest pessoaRequest) {
+		this.nomeCompleto = pessoaRequest.getNomeCompleto();
+		this.dataNascimento = pessoaRequest.getDataNascimento();
 		this.dataHoraDeCadastro = LocalDateTime.now();
 	}
 	
