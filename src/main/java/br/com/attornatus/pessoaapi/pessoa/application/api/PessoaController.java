@@ -2,6 +2,8 @@ package br.com.attornatus.pessoaapi.pessoa.application.api;
 
 import javax.validation.Valid;
 
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.attornatus.pessoaapi.pessoa.application.service.PessoaService;
@@ -16,7 +18,7 @@ public class PessoaController implements PessoaAPI {
 	private final PessoaService pessoaService;
 
 	@Override
-	public PessoaResponse postPessoa(@Valid PessoaRequest pessoaRequest) {
+	public PessoaResponse postPessoa(@Valid @RequestBody PessoaRequest pessoaRequest) {
 		log.info("[inicia] PessoaController - postPessoa ");
 	    PessoaResponse pessoaCriado = pessoaService.criaPessoa(pessoaRequest);
 		log.info("[finaliza] PessoaController - postPessoa ");
