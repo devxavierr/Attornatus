@@ -3,7 +3,6 @@ package br.com.attornatus.pessoaapi.pessoa.application.api;
 import javax.validation.Valid;
 
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.attornatus.pessoaapi.pessoa.application.service.PessoaService;
