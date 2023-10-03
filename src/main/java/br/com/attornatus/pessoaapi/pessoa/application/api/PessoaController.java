@@ -9,6 +9,8 @@ import br.com.attornatus.pessoaapi.pessoa.application.service.PessoaService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
+import java.util.List;
+
 @RestController
 @Log4j2
 @RequiredArgsConstructor
@@ -22,6 +24,13 @@ public class PessoaController implements PessoaAPI {
 	    PessoaResponse pessoaCriado = pessoaService.criaPessoa(pessoaRequest);
 		log.info("[finaliza] PessoaController - postPessoa ");
 		return pessoaCriado;
+	}
+
+	@Override
+	public List<PessoaListResponse> getTodasPessoas() {
+		log.info("[inicia] PessoaController - getTodasPessoas");
+		log.info("[finaliza] PessoaController - getTodasPessoas");
+		return null;
 	}
 
 }
