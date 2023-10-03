@@ -8,6 +8,8 @@ import br.com.attornatus.pessoaapi.pessoa.application.repository.PessoaRepositor
 import br.com.attornatus.pessoaapi.pessoa.domain.Pessoa;
 import lombok.extern.log4j.Log4j2;
 
+import java.util.List;
+
 @Repository
 @Log4j2
 @RequiredArgsConstructor
@@ -21,6 +23,14 @@ public class PessoaInfraRepository implements PessoaRepository {
 		pessoaSpringDataJPARepository.save(pessoa);
 		log.info("[finaliza] PessoaInfraRepository - salva ");
 		return pessoa;
+	}
+
+	@Override
+	public List<Pessoa> buscaTodasPessoas() {
+		log.info("[inicia] PessoaInfraRepository - buscaTodasPessoas ");
+		List<Pessoa> todasPessoas = pessoaSpringDataJPARepository.findAll();
+		log.info("[finaliza] PessoaInfraRepository - buscaTodasPessoas ");
+		return todasPessoas;
 	}
 
 }
