@@ -9,6 +9,9 @@ import br.com.attornatus.pessoaapi.pessoa.application.service.PessoaService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
+import java.util.List;
+import java.util.UUID;
+
 @RestController
 @Log4j2
 @RequiredArgsConstructor
@@ -22,6 +25,23 @@ public class PessoaController implements PessoaAPI {
 	    PessoaResponse pessoaCriado = pessoaService.criaPessoa(pessoaRequest);
 		log.info("[finaliza] PessoaController - postPessoa ");
 		return pessoaCriado;
+	}
+
+	@Override
+	public List<PessoaListResponse> getTodasPessoas() {
+		log.info("[inicia] PessoaController - getTodasPessoas");
+		List<PessoaListResponse> pessoas = pessoaService.buscaTodasPessoas();
+		log.info("[finaliza] PessoaController - getTodasPessoas");
+		return pessoas;
+	}
+
+	@Override
+	public PessoaDetalhadaResponse getPessoaAtravesId(UUID idPessoa) {
+		log.info("[inicia] PessoaController - getPessoaAtravesId");
+		log.info("[idPessoa] {}", idPessoa);
+		PessoaDetalhadaResponse pessoaDetalhada = pessoaService.buscaPessoaAtravesId(idPessoa);
+		log.info("[finaliza] PessoaController - getPessoaAtravesId");
+		return pessoaDetalhada;
 	}
 
 }
