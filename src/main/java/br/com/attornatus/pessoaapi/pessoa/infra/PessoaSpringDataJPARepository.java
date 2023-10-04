@@ -8,4 +8,5 @@ import java.util.UUID;
 
 public interface PessoaSpringDataJPARepository extends JpaRepository<Pessoa, UUID> {
     Optional<Pessoa> findByIdPessoa(UUID idPessoa);
+
 }
