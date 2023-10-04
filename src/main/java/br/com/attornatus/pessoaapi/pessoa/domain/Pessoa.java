@@ -36,6 +36,13 @@ public class Pessoa {
 		this.dataNascimento = pessoaRequest.getDataNascimento();
 		this.dataHoraDeCadastro = LocalDateTime.now();
 	}
-	
-	
+
+
+	public void altera(PessoaRequest pessoaRequest) {
+		this.nomeCompleto = pessoaRequest.getNomeCompleto();
+		this.dataNascimento = pessoaRequest.getDataNascimento();
+		this.dataHoraDaultimaAuteracao = LocalDateTime.now();
+	}
+
+
 }
