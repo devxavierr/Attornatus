@@ -23,6 +23,7 @@ public class Pessoa {
 	@Column(columnDefinition = "uuid", name = "id", updatable = false, unique = true, nullable = false)
 	private UUID idPessoa;
 	@NotBlank
+	@Column(unique = true)
 	private String nomeCompleto;
 	@NotNull
 	private LocalDate dataNascimento;
