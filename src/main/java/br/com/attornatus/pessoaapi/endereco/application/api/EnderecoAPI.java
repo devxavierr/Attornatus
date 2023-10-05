@@ -1,6 +1,5 @@
 package br.com.attornatus.pessoaapi.endereco.application.api;
 
-import br.com.attornatus.pessoaapi.pessoa.application.api.PessoaDetalhadaResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,4 +25,9 @@ public interface EnderecoAPI {
     @DeleteMapping(value = "/{idEndereco}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void deletaEnderecoAtravesId(@PathVariable UUID idPessoa, @PathVariable UUID idEndereco);
+
+    @PatchMapping(value = "/{idEndereco}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    EnderecoResponse patchEndereco(@PathVariable UUID idPessoa, @PathVariable UUID idEndereco, @Valid @RequestBody EnderecoAlteracaoRequest enderecoAlteracaoRequest);
+
 }
