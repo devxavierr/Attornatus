@@ -27,6 +27,7 @@ public class EnderecoController implements EnderecoAPI {
     public List<EnderecoPessoaListResponse> getTodasPessoasComId(UUID idPessoa) {
         log.info("[inicia] EnderecoController - getTodasPessoasComId");
         log.info("[idPessoa] {}", idPessoa);
+        List<EnderecoPessoaListResponse> enderecoDaPessoa = enderecoService.buscaEnderecoDaPessoaComId(idPessoa);
         log.info("[finaliza] EnderecoController - getTodasPessoasComId");
         return null;
     }
