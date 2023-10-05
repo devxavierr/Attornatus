@@ -41,8 +41,9 @@ public class EnderecoApplicationService implements EnderecoService {
     @Override
     public EnderecoPessoaDetalhaResponse buscaEnderecoDaPessoaComId(UUID idPessoa, UUID idEndereco) {
         log.info("[inicia] EnderecoApplicationService - buscaEnderecoDaPessoaComId");
+        pessoaService.buscaPessoaAtravesId(idPessoa);
+        Endereco endereco = enderecoRepository.buscaEnderecoPeloId(idEndereco);
         log.info("[finaliza] EnderecoApplicationService - buscaEnderecoDaPessoaComId");
-
-        return null;
+        return new EnderecoPessoaDetalhaResponse(endereco);
     }
 }
