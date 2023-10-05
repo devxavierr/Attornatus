@@ -1,5 +1,6 @@
 package br.com.attornatus.pessoaapi.endereco.application.service;
 
+import br.com.attornatus.pessoaapi.endereco.application.api.EnderecoPessoaDetalhaResponse;
 import br.com.attornatus.pessoaapi.endereco.application.api.EnderecoPessoaListResponse;
 import br.com.attornatus.pessoaapi.endereco.application.api.EnderecoRequest;
 import br.com.attornatus.pessoaapi.endereco.application.api.EnderecoResponse;
@@ -12,4 +13,6 @@ public interface EnderecoService {
     EnderecoResponse criaEndereco(UUID idPessoa, @Valid EnderecoRequest enderecoRequest);
 
     List<EnderecoPessoaListResponse> buscaEnderecoDaPessoaComId(UUID idPessoa);
+
+    EnderecoPessoaDetalhaResponse buscaEnderecoDaPessoaComId(UUID idPessoa, UUID idEndereco);
 }

@@ -1,5 +1,6 @@
 package br.com.attornatus.pessoaapi.endereco.application.service;
 
+import br.com.attornatus.pessoaapi.endereco.application.api.EnderecoPessoaDetalhaResponse;
 import br.com.attornatus.pessoaapi.endereco.application.api.EnderecoPessoaListResponse;
 import br.com.attornatus.pessoaapi.endereco.application.api.EnderecoRequest;
 import br.com.attornatus.pessoaapi.endereco.application.api.EnderecoResponse;
@@ -35,5 +36,13 @@ public class EnderecoApplicationService implements EnderecoService {
         List<Endereco> enderecoDaPessoa = enderecoRepository.buscaEnderecoDaPessoaComId(idPessoa);
         log.info("[finaliza] EnderecoApplicationService - buscaEnderecoDaPessoaComId");
         return EnderecoPessoaListResponse.converte(enderecoDaPessoa);
+    }
+
+    @Override
+    public EnderecoPessoaDetalhaResponse buscaEnderecoDaPessoaComId(UUID idPessoa, UUID idEndereco) {
+        log.info("[inicia] EnderecoApplicationService - buscaEnderecoDaPessoaComId");
+        log.info("[finaliza] EnderecoApplicationService - buscaEnderecoDaPessoaComId");
+
+        return null;
     }
 }
