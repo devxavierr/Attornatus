@@ -1,5 +1,6 @@
 package br.com.attornatus.pessoaapi.endereco.application.api;
 
+import br.com.attornatus.pessoaapi.pessoa.application.api.PessoaDetalhadaResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,5 +18,9 @@ public interface EnderecoAPI {
     @GetMapping
     @ResponseStatus(code = HttpStatus.OK)
     List<EnderecoPessoaListResponse> getTodasPessoasComId(@PathVariable UUID idPessoa);
+
+    @GetMapping(value = "{idEndereco}")
+    @ResponseStatus(code = HttpStatus.OK)
+    EnderecoPessoaDetalhaResponse getEnderecoDaPessoaAtravesId(@PathVariable UUID idPessoa, @PathVariable UUID idEndereco);
 
 }
