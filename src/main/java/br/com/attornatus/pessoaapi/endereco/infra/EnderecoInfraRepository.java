@@ -25,8 +25,8 @@ public class EnderecoInfraRepository implements EnderecoRepository {
     @Override
     public List<Endereco> buscaEnderecoDaPessoaComId(UUID idPessoa) {
         log.info("[inicia] EnderecoInfraRepository - buscaEnderecoDaPessoaComId");
+        var endereco = enderecoSpringDataJPARepository.findByIdPessoa(idPessoa);
         log.info("[finaliza] EnderecoInfraRepository - buscaEnderecoDaPessoaComId");
-        var endereco = enderecoSpringDataJPARepository.findByidPessoa(idPessoa);
         return endereco;
     }
 }

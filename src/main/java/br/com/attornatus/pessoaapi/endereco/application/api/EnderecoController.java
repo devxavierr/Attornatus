@@ -29,7 +29,7 @@ public class EnderecoController implements EnderecoAPI {
         log.info("[idPessoa] {}", idPessoa);
         List<EnderecoPessoaListResponse> enderecoDaPessoa = enderecoService.buscaEnderecoDaPessoaComId(idPessoa);
         log.info("[finaliza] EnderecoController - getTodasPessoasComId");
-        return null;
+        return enderecoDaPessoa;
     }
 
 }
