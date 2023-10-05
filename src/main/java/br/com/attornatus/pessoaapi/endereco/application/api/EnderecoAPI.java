@@ -23,4 +23,7 @@ public interface EnderecoAPI {
     @ResponseStatus(code = HttpStatus.OK)
     EnderecoPessoaDetalhaResponse getEnderecoDaPessoaAtravesId(@PathVariable UUID idPessoa, @PathVariable UUID idEndereco);
 
+    @DeleteMapping(value = "/{idEndereco}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void deletaEnderecoAtravesId(@PathVariable UUID idPessoa, @PathVariable UUID idEndereco);
 }

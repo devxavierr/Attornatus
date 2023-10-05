@@ -15,4 +15,6 @@ public interface EnderecoService {
     List<EnderecoPessoaListResponse> buscaEnderecoDaPessoaComId(UUID idPessoa);
 
     EnderecoPessoaDetalhaResponse buscaEnderecoDaPessoaComId(UUID idPessoa, UUID idEndereco);
+
+    void deletaEnderecoDaPessoaComId(UUID idPessoa, UUID idEndereco);
 }
