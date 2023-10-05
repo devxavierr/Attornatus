@@ -1,9 +1,6 @@
 package br.com.attornatus.pessoaapi.endereco.application.service;
 
-import br.com.attornatus.pessoaapi.endereco.application.api.EnderecoPessoaDetalhaResponse;
-import br.com.attornatus.pessoaapi.endereco.application.api.EnderecoPessoaListResponse;
-import br.com.attornatus.pessoaapi.endereco.application.api.EnderecoRequest;
-import br.com.attornatus.pessoaapi.endereco.application.api.EnderecoResponse;
+import br.com.attornatus.pessoaapi.endereco.application.api.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -17,4 +14,6 @@ public interface EnderecoService {
     EnderecoPessoaDetalhaResponse buscaEnderecoDaPessoaComId(UUID idPessoa, UUID idEndereco);
 
     void deletaEnderecoDaPessoaComId(UUID idPessoa, UUID idEndereco);
+
+    void alteraEnderecoDaPessoaComId(UUID idPessoa, UUID idEndereco, @Valid EnderecoAlteracaoRequest enderecoAlteracaoRequest);
 }

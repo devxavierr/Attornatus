@@ -1,9 +1,6 @@
 package br.com.attornatus.pessoaapi.endereco.application.service;
 
-import br.com.attornatus.pessoaapi.endereco.application.api.EnderecoPessoaDetalhaResponse;
-import br.com.attornatus.pessoaapi.endereco.application.api.EnderecoPessoaListResponse;
-import br.com.attornatus.pessoaapi.endereco.application.api.EnderecoRequest;
-import br.com.attornatus.pessoaapi.endereco.application.api.EnderecoResponse;
+import br.com.attornatus.pessoaapi.endereco.application.api.*;
 import br.com.attornatus.pessoaapi.endereco.domain.Endereco;
 import br.com.attornatus.pessoaapi.pessoa.application.service.PessoaService;
 import lombok.RequiredArgsConstructor;
@@ -56,5 +53,15 @@ public class EnderecoApplicationService implements EnderecoService {
         log.info("[finaliza] EnderecoApplicationService - deletaEnderecoDaPessoaComId");
 
 
+    }
+
+    @Override
+    public void alteraEnderecoDaPessoaComId(UUID idPessoa, UUID idEndereco, EnderecoAlteracaoRequest enderecoAlteracaoRequest) {
+        log.info("[inicia] EnderecoApplicationService - alteraEnderecoDaPessoaComId");
+        pessoaService.buscaPessoaAtravesId(idPessoa);
+        Endereco endereco = enderecoRepository.buscaEnderecoPeloId(idEndereco);
+        endereco.altera(enderecoAlteracaoRequest);
+        enderecoRepository.salvaEndereco(endereco);
+        log.info("[finaliza] EnderecoApplicationService - alteraEnderecoDaPessoaComId");
     }
 }

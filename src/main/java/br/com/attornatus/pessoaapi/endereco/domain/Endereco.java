@@ -1,5 +1,6 @@
 package br.com.attornatus.pessoaapi.endereco.domain;
 
+import br.com.attornatus.pessoaapi.endereco.application.api.EnderecoAlteracaoRequest;
 import br.com.attornatus.pessoaapi.endereco.application.api.EnderecoRequest;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -35,6 +36,15 @@ public class Endereco {
 
     public Endereco(UUID idPessoa, @Valid EnderecoRequest enderecoRequest) {
         this.idPessoa = idPessoa;
+        this.principalLogradouro = enderecoRequest.getPrincipalLogradouro();
+        this.principalCep = enderecoRequest.getPrincipalCep();
+        this.principalNumero = enderecoRequest.getPrincipalNumero();
+        this.logradouro = enderecoRequest.getLogradouro();
+        this.cep = enderecoRequest.getCep();
+        this.numero = enderecoRequest.getNumero();
+    }
+
+    public void altera(EnderecoAlteracaoRequest enderecoRequest) {
         this.principalLogradouro = enderecoRequest.getPrincipalLogradouro();
         this.principalCep = enderecoRequest.getPrincipalCep();
         this.principalNumero = enderecoRequest.getPrincipalNumero();
