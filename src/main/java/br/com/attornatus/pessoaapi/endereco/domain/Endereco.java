@@ -5,8 +5,8 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
@@ -15,12 +15,17 @@ import java.util.UUID;
 @Getter
 @Entity
 public class Endereco {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(columnDefinition = "uuid", name = "idEndereco", updatable = false, unique = true, nullable = false)
+    private UUID idEndereco;
     @NotNull
+    @Column(columnDefinition = "uuid", name = "idPessoa", nullable = false)
+
     private UUID idPessoa;
     @NotBlank
     private String principalLogradouro;
     @NotNull
-    @Column(columnDefinition = "principalCep", name = "principalCep", updatable = false, unique = true, nullable = false)
     private String principalCep;
     @NotBlank
     private String principalNumero;
@@ -28,7 +33,7 @@ public class Endereco {
     private String cep;
     private String numero;
 
-    public Endereco(UUID idPessoa, EnderecoRequest enderecoRequest) {
+    public Endereco(UUID idPessoa, @Valid EnderecoRequest enderecoRequest) {
         this.idPessoa = idPessoa;
         this.principalLogradouro = enderecoRequest.getPrincipalLogradouro();
         this.principalCep = enderecoRequest.getPrincipalCep();

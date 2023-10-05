@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
+import javax.validation.Valid;
 import java.util.UUID;
 @Service
 @Log4j2
@@ -17,11 +18,11 @@ public class EnderecoApplicationService implements EnderecoService {
     private final EnderecoRepository enderecoRepository;
 
     @Override
-    public EnderecoResponse criaEndereco(UUID idPessoa, EnderecoRequest enderecoRequest) {
+    public EnderecoResponse criaEndereco(UUID idPessoa, @Valid EnderecoRequest enderecoRequest) {
         log.info("[inicia] EnderecoApplicationService - criaEndereco");
         pessoaService.buscaPessoaAtravesId(idPessoa);
         Endereco endereco = enderecoRepository.salvaEndereco(new Endereco(idPessoa, enderecoRequest));
         log.info("[finaliza] EnderecoApplicationService - criaEndereco");
-        return new EnderecoResponse(endereco.getPrincipalCep());
+        return new EnderecoResponse(endereco.getIdEndereco());
     }
 }
