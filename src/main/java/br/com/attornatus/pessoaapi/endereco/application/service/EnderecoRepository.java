@@ -11,4 +11,6 @@ public interface EnderecoRepository {
     List<Endereco> buscaEnderecoDaPessoaComId(UUID idPessoa);
 
     Endereco buscaEnderecoPeloId(UUID idEndereco);
+
+    void deletaEndereco(Endereco endereco);
 }
