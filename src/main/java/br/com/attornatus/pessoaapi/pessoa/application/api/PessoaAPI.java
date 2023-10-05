@@ -22,4 +22,12 @@ public interface PessoaAPI {
 	@GetMapping(value = "/{idPessoa}")
 	@ResponseStatus(code = HttpStatus.OK)
 	PessoaDetalhadaResponse getPessoaAtravesId(@PathVariable UUID idPessoa);
+
+	@DeleteMapping(value = "/{idPessoa}")
+	@ResponseStatus(code = HttpStatus.NO_CONTENT)
+	void deletaPessoaAtravesId(@PathVariable UUID idPessoa);
+
+	@PatchMapping(value = "/{idPessoa}")
+	@ResponseStatus(code = HttpStatus.CREATED)
+	void patchAlteraPessoa(@PathVariable UUID idPessoa, @Valid @RequestBody PessoaRequest pessoaRequest);
 }

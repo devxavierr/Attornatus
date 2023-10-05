@@ -49,4 +49,22 @@ public class PessoaApplicationService implements PessoaService {
 		return new PessoaDetalhadaResponse(pessoa);
 	}
 
+	@Override
+	public void deletaPessoaAtravesId(UUID idPessoa) {
+		log.info("[inicia] PessoaApplicationService - deletaPessoaAtravesId ");
+		Pessoa pessoa = pessoaRepository.buscaPessoaAtravesId(idPessoa);
+		pessoaRepository.deletaPessoa(pessoa);
+		log.info("[finaliza] PessoaApplicationService - deletaPessoaAtravesId ");
+	}
+
+	@Override
+	public void patchAlteraPessoa(UUID idPessoa, PessoaRequest pessoaRequest) {
+		log.info("[inicia] PessoaApplicationService - patchAlteraPessoa ");
+		Pessoa pessoa = pessoaRepository.buscaPessoaAtravesId(idPessoa);
+		pessoa.altera(pessoaRequest);
+		pessoaRepository.salva(pessoa);
+		log.info("[finaliza] PessoaApplicationService - patchAlteraPessoa ");
+
+	}
+
 }

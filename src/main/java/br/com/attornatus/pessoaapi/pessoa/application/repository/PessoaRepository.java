@@ -13,4 +13,6 @@ public interface PessoaRepository {
     List<Pessoa> buscaTodasPessoas();
 
     Pessoa buscaPessoaAtravesId(UUID idPessoa);
+
+    void deletaPessoa(Pessoa pessoa);
 }
