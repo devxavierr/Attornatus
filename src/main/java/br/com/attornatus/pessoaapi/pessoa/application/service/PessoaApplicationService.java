@@ -2,6 +2,10 @@ package br.com.attornatus.pessoaapi.pessoa.application.service;
 
 import javax.validation.Valid;
 
+import br.com.attornatus.pessoaapi.endereco.application.api.EnderecoPessoaListResponse;
+import br.com.attornatus.pessoaapi.endereco.application.service.EnderecoApplicationService;
+import br.com.attornatus.pessoaapi.endereco.application.service.EnderecoRepository;
+import br.com.attornatus.pessoaapi.endereco.domain.Endereco;
 import br.com.attornatus.pessoaapi.pessoa.application.api.PessoaDetalhadaResponse;
 import br.com.attornatus.pessoaapi.pessoa.application.api.PessoaListResponse;
 import org.springframework.stereotype.Service;
@@ -22,6 +26,7 @@ import java.util.UUID;
 public class PessoaApplicationService implements PessoaService {
 
 	private final PessoaRepository pessoaRepository;
+	private final EnderecoRepository enderecoRepository;
 
 	@Override
 	public PessoaResponse criaPessoa(@Valid PessoaRequest pessoaRequest) {
@@ -53,6 +58,8 @@ public class PessoaApplicationService implements PessoaService {
 	public void deletaPessoaAtravesId(UUID idPessoa) {
 		log.info("[inicia] PessoaApplicationService - deletaPessoaAtravesId ");
 		Pessoa pessoa = pessoaRepository.buscaPessoaAtravesId(idPessoa);
+		List<Endereco> enderecoDaPessoa = enderecoRepository.buscaEnderecoDaPessoaComId(idPessoa);
+		enderecoRepository.deletaEndereco(enderecoDaPessoa);
 		pessoaRepository.deletaPessoa(pessoa);
 		log.info("[finaliza] PessoaApplicationService - deletaPessoaAtravesId ");
 	}

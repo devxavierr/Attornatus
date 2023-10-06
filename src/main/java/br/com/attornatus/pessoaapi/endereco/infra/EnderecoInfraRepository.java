@@ -49,4 +49,9 @@ public class EnderecoInfraRepository implements EnderecoRepository {
 
 
     }
+
+    @Override
+    public void deletaEndereco(List<Endereco> enderecoDaPessoa) {
+        enderecoSpringDataJPARepository.deleteAll(enderecoDaPessoa);
+    }
 }
